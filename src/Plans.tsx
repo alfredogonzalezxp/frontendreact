@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import api, { type Plan } from '../api';
-
+//cambio
 const Plans: React.FC = () => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');

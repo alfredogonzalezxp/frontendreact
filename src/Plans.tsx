@@ -66,7 +66,7 @@ const Plans: React.FC = () => {
                     <p>Cargando planes...</p>
                 ) : (
                     <ul className="divide-y divide-gray-700">
-                        {plans.map(plan => (
+                        {plans.map((plan: Plan) => (
                             <li key={plan.id} className="py-3 flex justify-between items-center">
                                 <span>{plan.name}</span>
                                 <span className="text-gray-400">${plan.price.toFixed(2)} / {plan.billingCycle === 'MONTHLY' ? 'mes' : 'año'}</span>

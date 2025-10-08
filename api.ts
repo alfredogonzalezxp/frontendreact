@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:8080';
+/// <reference types="vite/client" />
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 
 export interface Plan {
     id: string;
@@ -37,7 +39,6 @@ const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(plan),
     }).then(res => res.json()),
-
     // Clients
     getClients: (): Promise<Client[]> => fetch(`${API_BASE_URL}/clients`).then(res => res.json()),
     getClientById: (id: string): Promise<Client> => fetch(`${API_BASE_URL}/clients/${id}`).then(res => res.json()),
@@ -46,7 +47,6 @@ const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(client),
     }).then(res => res.json()),
-
     // Subscriptions
     getSubscriptions: (): Promise<Subscription[]> => fetch(`${API_BASE_URL}/subscriptions`).then(res => res.json()),
     createSubscription: (data: { clientId: string, planId: string }): Promise<Subscription> => fetch(`${API_BASE_URL}/subscriptions`, {
@@ -54,7 +54,6 @@ const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
     }).then(res => res.json()),
-
     // Invoices
     getInvoices: (): Promise<Invoice[]> => fetch(`${API_BASE_URL}/invoices`).then(res => res.json()),
     payInvoice: (invoiceId: string): Promise<Invoice> => fetch(`${API_BASE_URL}/invoices/${invoiceId}/pay`, {
